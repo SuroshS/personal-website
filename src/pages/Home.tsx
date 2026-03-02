@@ -1,51 +1,67 @@
+import { useState } from "react";
+
+import Projects from "../components/Projects";
+import Experience from "../components/Experience";
+import Study from "../components/Study";
+import Contact from "../components/Contact";
+
 import "../styles/home.css";
 
+type TabKey = "projects" | "experience" | "study" | "contact";
+
 export default function Home() {
+  const [tab, setTab] = useState<TabKey>("projects");
+
   return (
-    <section className="hero">
-      <div className="hero-container">
-        <h1>
-          Surosh <span>Salehi</span>
-        </h1>
+    <main className="page">
 
-        <p className="hero-subtitle">
-          IT Graduate | Entrepreneur | Building AI-Driven Products
-        </p>
+      <h1 className="title">Surosh Salehi</h1>
 
-        <p className="hero-description">
-          I build clean, user-focused systems across React, Node.js, and modern
-          cloud tools — from AI study platforms to real-world business websites.
-        </p>
+      <p className="tagline">
+        IT Graduate • Brisbane
+      </p>
 
-        <div className="hero-buttons">
-          <a href="#projects" className="btn-primary">
-            View My Work
-          </a>
-          <a href="#contact" className="btn-secondary">
-            Contact Me
-          </a>
-          <a href="/Surosh-Salehi-Resume.pdf" className="btn-secondary" download>
-            Download Resume
-          </a>
-        </div>
+      <div className="tabs">
 
-        <div className="hero-stats">
-          <div className="stat-card">
-            <p>Focus</p>
-            <strong>AI + Product Builds</strong>
-          </div>
+        <button
+          className={tab === "projects" ? "tab active" : "tab"}
+          onClick={() => setTab("projects")}
+        >
+          Projects
+        </button>
 
-          <div className="stat-card">
-            <p>Stack</p>
-            <strong>React • Node • Firebase</strong>
-          </div>
+        <button
+          className={tab === "experience" ? "tab active" : "tab"}
+          onClick={() => setTab("experience")}
+        >
+          Experience
+        </button>
 
-          <div className="stat-card">
-            <p>Strength</p>
-            <strong>Clean UI + Systems</strong>
-          </div>
-        </div>
+        <button
+          className={tab === "study" ? "tab active" : "tab"}
+          onClick={() => setTab("study")}
+        >
+          Study
+        </button>
+
+        <button
+          className={tab === "contact" ? "tab active" : "tab"}
+          onClick={() => setTab("contact")}
+        >
+          Contact
+        </button>
+
       </div>
-    </section>
+
+      <div className="panel">
+
+        {tab === "projects" && <Projects />}
+        {tab === "experience" && <Experience />}
+        {tab === "study" && <Study />}
+        {tab === "contact" && <Contact />}
+
+      </div>
+
+    </main>
   );
 }
