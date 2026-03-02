@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/projects.css";
 
 type Project = {
   title: string;
@@ -25,10 +26,10 @@ export default function Projects() {
         {
           heading: "Architecture",
           points: [
-            "Frontend built using React + Vite",
-            "Firebase Authentication & Firestore database",
-            "OpenAI API integration for summarisation & quiz generation",
-            "PDF and DOCX parsing support",
+            "React + Vite frontend",
+            "Firebase Authentication & Firestore",
+            "OpenAI API integration",
+            "PDF & DOCX parsing support",
           ],
         },
         {
@@ -37,7 +38,7 @@ export default function Projects() {
             "Lecture summarisation engine",
             "AI-generated quizzes",
             "XP-based progress tracking",
-            "User dashboard & cloud storage logic",
+            "User dashboard & cloud storage",
           ],
         },
       ],
@@ -48,47 +49,28 @@ export default function Projects() {
         },
       ],
     },
-
     {
       title: "Website Development – Premium Funding & Coat & Cure",
       shortDescription:
-        "End-to-end business website design, development, deployment and hosting configuration.",
+        "End-to-end website design, development and hosting configuration.",
       mainStack: ["WordPress", "Elementor", "Figma", "DNS", "SMTP"],
       sections: [
         {
-          heading: "Design Process (Figma → Development)",
+          heading: "Design & Development",
           points: [
-            "Created UI layouts in Figma before development",
-            "Designed responsive page structures",
-            "Mapped user journeys & call-to-action flow",
-            "Translated designs into Elementor components",
+            "UI design in Figma",
+            "Responsive page structure",
+            "Elementor implementation",
+            "WPForms lead capture",
           ],
         },
         {
-          heading: "Development & Implementation",
+          heading: "Deployment & Hosting",
           points: [
-            "Built pages using Elementor & custom styling",
-            "Configured WPForms for lead capture",
-            "Integrated SMTP email delivery systems",
-            "Optimised mobile responsiveness",
-          ],
-        },
-        {
-          heading: "Hosting & Deployment",
-          points: [
-            "Domain configuration & DNS management",
-            "Hosting environments (Hostinger, Vodien, Cloudflare)",
-            "SSL setup & security configuration",
-            "Email routing & mailbox troubleshooting",
-          ],
-        },
-        {
-          heading: "Business Impact",
-          points: [
-            "Delivered fully operational business websites",
-            "Enabled structured lead generation",
-            "Improved professional online presence",
-            "Handled real-world troubleshooting & client communication",
+            "Domain & DNS configuration",
+            "Cloudflare & hosting setup",
+            "SSL & security configuration",
+            "Email routing & SMTP integration",
           ],
         },
       ],
@@ -103,20 +85,19 @@ export default function Projects() {
         },
       ],
     },
-
     {
       title: "AI Email Assistant",
       shortDescription:
-        "Backend system supporting authentication and automated email workflows.",
+        "Backend system for authentication and automated email workflows.",
       mainStack: ["Node.js", "MongoDB", "REST APIs"],
       sections: [
         {
           heading: "Architecture",
           points: [
             "Node.js backend service",
-            "MongoDB database integration",
+            "MongoDB integration",
             "Authentication layer",
-            "Email workflow automation logic",
+            "Email workflow automation",
           ],
         },
       ],
@@ -134,49 +115,55 @@ export default function Projects() {
   };
 
   return (
-    <div>
-      <h2>Projects</h2>
+    <div className="projectsWrapper">
+      <h2 className="projectsTitle">Projects</h2>
 
-      {projects.map((project, index) => (
-        <div key={project.title} className="projectCard">
+      {projects.map((project, index) => {
+        const isOpen = openIndex === index;
 
+        return (
           <div
-            className="projectHeader"
-            onClick={() => toggle(index)}
+            key={project.title}
+            className={`projectCard ${isOpen ? "active" : ""}`}
           >
-            <div>
-              <h3>{project.title}</h3>
-              <p className="muted">{project.shortDescription}</p>
+            <div
+              className="projectHeader"
+              onClick={() => toggle(index)}
+            >
+              <div>
+                <h3>{project.title}</h3>
+                <p className="projectDescription">
+                  {project.shortDescription}
+                </p>
 
-              <div className="techStack">
-                {project.mainStack.map((tech) => (
-                  <span key={tech} className="chip">
-                    {tech}
-                  </span>
-                ))}
+                <div className="techStack">
+                  {project.mainStack.map((tech) => (
+                    <span key={tech} className="chip">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
+
+              <span className="expandIcon">
+                {isOpen ? "−" : "+"}
+              </span>
             </div>
 
-            <span className="expandIcon">
-              {openIndex === index ? "−" : "+"}
-            </span>
-          </div>
+            <div className={`projectDetails ${isOpen ? "open" : ""}`}>
+              {isOpen &&
+                project.sections.map((section) => (
+                  <div key={section.heading} className="detailBlock">
+                    <h4>{section.heading}</h4>
+                    <ul>
+                      {section.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
 
-          {openIndex === index && (
-            <div className="projectDetails">
-
-              {project.sections.map((section) => (
-                <div key={section.heading} className="detailBlock">
-                  <h4>{section.heading}</h4>
-                  <ul>
-                    {section.points.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-
-              {project.liveLinks && (
+              {isOpen && project.liveLinks && (
                 <div className="projectLinks">
                   {project.liveLinks.map((link) => (
                     <a
@@ -184,19 +171,17 @@ export default function Projects() {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="link"
+                      className="projectButton"
                     >
                       {link.label}
                     </a>
                   ))}
                 </div>
               )}
-
             </div>
-          )}
-
-        </div>
-      ))}
+          </div>
+        );
+      })}
     </div>
   );
 }

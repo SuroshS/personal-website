@@ -1,0 +1,131 @@
+.projectsWrapper {
+  margin-top: 20px;
+}
+
+.projectsTitle {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.projectCard {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 22px;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+.projectCard:hover {
+  transform: translateY(-4px);
+  border-color: #ddd;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.projectCard.active {
+  border-color: #ddd;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+}
+
+.projectHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.projectHeader h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.projectDescription {
+  opacity: 0.65;
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.techStack {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  background: #f3f3f3;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.chip:hover {
+  background: #111;
+  color: white;
+}
+
+.expandIcon {
+  font-size: 20px;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+.projectCard.active .expandIcon {
+  transform: rotate(180deg);
+}
+
+.projectDetails {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.projectDetails.open {
+  max-height: 1000px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.detailBlock {
+  margin-bottom: 18px;
+}
+
+.detailBlock h4 {
+  font-size: 14px;
+  margin-bottom: 6px;
+  opacity: 0.7;
+}
+
+.detailBlock ul {
+  padding-left: 18px;
+}
+
+.detailBlock li {
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.projectLinks {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.projectButton {
+  background: #111;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.projectButton:hover {
+  background: #333;
+}

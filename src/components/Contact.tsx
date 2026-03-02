@@ -1,30 +1,40 @@
+import "../styles/contact.css";
+
 export default function Contact() {
   return (
-    <div>
+    <div className="contactWrapper">
 
-      <h2>Contact</h2>
+      <h2 className="contactTitle">Get In Touch</h2>
 
-      <p>
-        <strong>Email: </strong>
-        <a
-          href="mailto:salehisurosh198@gmail.com"
-          className="link"
-        >
-          salehisurosh198@gmail.com
-        </a>
+      <p className="contactIntro">
+        Open to graduate opportunities, collaborations, and technical discussions.
       </p>
 
-      <p>
-        <strong>LinkedIn: </strong>
+      <div className="contactGrid">
+
+        <a
+          href="mailto:salehisurosh198@gmail.com"
+          className="contactCard"
+        >
+          <div className="contactLabel">Email</div>
+          <div className="contactValue">
+            salehisurosh198@gmail.com
+          </div>
+        </a>
+
         <a
           href="https://www.linkedin.com/in/surosh-salehi-29b8b5206/"
           target="_blank"
           rel="noopener noreferrer"
-          className="link"
+          className="contactCard"
         >
-          Surosh Salehi
+          <div className="contactLabel">LinkedIn</div>
+          <div className="contactValue">
+            View Profile →
+          </div>
         </a>
-      </p>
+
+      </div>
 
     </div>
   );

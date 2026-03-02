@@ -1,0 +1,50 @@
+.contactWrapper {
+  margin-top: 20px;
+}
+
+.contactTitle {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.contactIntro {
+  opacity: 0.6;
+  margin-bottom: 40px;
+  font-size: 15px;
+}
+
+.contactGrid {
+  display: grid;
+  gap: 20px;
+}
+
+.contactCard {
+  display: block;
+  padding: 22px;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s ease;
+}
+
+.contactCard:hover {
+  transform: translateY(-4px);
+  border-color: #ddd;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.contactLabel {
+  font-size: 13px;
+  opacity: 0.5;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contactValue {
+  font-size: 16px;
+  font-weight: 500;
+}

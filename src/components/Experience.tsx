@@ -24,36 +24,36 @@ export default function Experience() {
         {
           heading: "What I Do",
           points: [
-            "Manage Microsoft 365 (Teams, SharePoint, Exchange, user provisioning)",
+            "Manage Microsoft 365 (Teams, SharePoint, Exchange)",
             "Configure shared mailboxes & permissions",
             "Troubleshoot room booking & timezone issues",
-            "Support internal systems (RediCASE, Best Practice)",
+            "Support RediCASE & Best Practice systems",
             "Improve internal workflows",
           ],
         },
         {
           heading: "Impact",
           points: [
-            "Improved system accessibility for staff",
+            "Improved system accessibility",
             "Streamlined onboarding/offboarding",
-            "Reduced recurring IT issues through structured fixes",
+            "Reduced recurring IT issues",
           ],
         },
       ],
     },
     {
       title: "Customer Service Officer",
-      organisation: "Services Australia (Centrelink → Medicare)",
+      organisation: "Services Australia",
       highlight:
         "High-volume operations, compliance systems, stakeholder management.",
       sections: [
         {
-          heading: "What I Did",
+          heading: "Key Contributions",
           points: [
-            "Processed claims, enrolments & identity verification",
+            "Processed claims & identity verification",
             "Managed sensitive customer cases",
-            "Worked in a KPI-driven, 24/7 operational environment",
-            "Trained new team members",
+            "Worked in KPI-driven environment",
+            "Trained new staff",
           ],
         },
         {
@@ -62,59 +62,56 @@ export default function Experience() {
             "Process precision",
             "Compliance awareness",
             "Communication under pressure",
-            "Enterprise systems literacy",
           ],
         },
       ],
     },
     {
       title: "BeeAware – Capstone Project",
-      organisation: "Frontend Developer | Agile Team Member",
+      organisation: "Frontend Developer | Agile Team",
       highlight:
         "Agile delivery, React development, project governance.",
       sections: [
         {
           heading: "My Role",
           points: [
-            "Implemented multiple frontend pages using React",
-            "Translated Figma designs into working UI",
+            "Built frontend pages in React",
+            "Translated Figma designs into UI",
             "Created user stories & risk register",
-            "Built burn-down tracking",
+            "Implemented burn-down tracking",
           ],
         },
         {
           heading: "What This Demonstrates",
           points: [
-            "Agile methodology experience",
-            "GitHub workflow familiarity",
+            "Agile experience",
+            "GitHub workflow",
             "Component-based architecture",
-            "Cross-functional collaboration",
           ],
         },
       ],
     },
     {
       title: "Website Development Projects",
-      organisation: "WordPress | UI/UX Design | Deployment",
+      organisation: "WordPress | UI/UX | Deployment",
       highlight:
         "End-to-end website deployment and hosting configuration.",
       sections: [
         {
           heading: "What I Handle",
           points: [
-            "Domain setup & DNS configuration",
-            "Hosting environments (Hostinger, Vodien, Cloudflare)",
-            "WPForms & SMTP email setup",
-            "UI design in Figma",
-            "Elementor development",
+            "Domain & DNS configuration",
+            "Hosting (Hostinger, Vodien, Cloudflare)",
+            "WPForms & SMTP setup",
+            "Figma UI design",
+            "Elementor builds",
           ],
         },
         {
-          heading: "This Shows",
+          heading: "What This Shows",
           points: [
-            "End-to-end website deployment",
             "Client communication",
-            "Hosting + email configuration",
+            "Deployment expertise",
             "Real-world troubleshooting",
           ],
         },
@@ -122,36 +119,29 @@ export default function Experience() {
     },
     {
       title: "Notionise (AI SaaS)",
-      organisation: "AI-powered study platform",
+      organisation: "Founder Project",
       highlight:
-        "React-based AI SaaS with authentication and cloud architecture.",
+        "React-based AI SaaS with authentication & cloud architecture.",
       sections: [
         {
           heading: "Stack",
-          points: [
-            "React",
-            "Firebase",
-            "AI APIs",
-            "Authentication systems",
-          ],
+          points: ["React", "Firebase", "AI APIs", "Authentication"],
         },
         {
           heading: "What I Built",
           points: [
-            "Lecture summarisation system",
-            "Quiz generation engine",
-            "XP-based progress tracking",
+            "Lecture summarisation engine",
+            "Quiz generation system",
+            "XP progress tracking",
             "User dashboards",
-            "Cloud-based storage logic",
           ],
         },
         {
           heading: "What This Demonstrates",
           points: [
             "Product thinking",
-            "Full-stack architecture awareness",
+            "Full-stack awareness",
             "AI integration",
-            "SaaS scalability mindset",
           ],
         },
       ],
@@ -163,63 +153,60 @@ export default function Experience() {
   };
 
   return (
-    <div className="experienceContainer">
-      <h2 className="experienceTitle">Professional Experience</h2>
+  <div className="expWrapper">
+    <h2 className="expTitle">Professional Experience</h2>
 
-      <p className="experienceIntro">
-        I build systems, solve operational problems, and bridge business with technology.
-      </p>
+    <p className="expIntro">
+      I build systems, solve operational problems, and bridge business with technology.
+    </p>
 
-      {experiences.map((exp, index) => (
-        <div key={exp.title} className="experienceCard">
+    <div className="timeline">
+      {experiences.map((exp, index) => {
+        const isOpen = openIndex === index;
 
+        return (
           <div
-            className="experienceHeader"
-            onClick={() => toggle(index)}
+            key={exp.title}
+            className={`timelineItem ${isOpen ? "active" : ""}`}
           >
-            <div>
-              <h3>{exp.title}</h3>
-              <p className="experienceOrg">{exp.organisation}</p>
-            </div>
+            <div className="timelineDot" />
 
-            <span className="toggleIcon">
-              {openIndex === index ? "−" : "+"}
-            </span>
-          </div>
-
-          <p className="experienceHighlight">{exp.highlight}</p>
-
-          {openIndex === index && (
-            <div className="experienceDetails">
-              {exp.sections.map((section) => (
-                <div key={section.heading} className="detailBlock">
-                  <h4>{section.heading}</h4>
-                  <ul>
-                    {section.points.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
+            <div className="timelineContent">
+              <div
+                className="timelineHeader"
+                onClick={() => toggle(index)}
+              >
+                <div>
+                  <h3>{exp.title}</h3>
+                  <p className="organisation">{exp.organisation}</p>
                 </div>
-              ))}
+
+                <span className="toggleIcon">
+                  {isOpen ? "−" : "+"}
+                </span>
+              </div>
+
+              <p className="highlight">{exp.highlight}</p>
+
+              <div className={`details ${isOpen ? "open" : ""}`}>
+                {isOpen &&
+                  exp.sections.map((section) => (
+                    <div key={section.heading} className="detailBlock">
+                      <h4>{section.heading}</h4>
+                      <ul>
+                        {section.points.map((point) => (
+                          <li key={point}>{point}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+              </div>
             </div>
-          )}
-        </div>
-      ))}
-
-      {/* Core Strengths */}
-
-      <div className="coreStrengths">
-        <h3>Core Strengths</h3>
-        <div className="strengthGrid">
-          <span>Enterprise System Administration</span>
-          <span>Frontend Development (React)</span>
-          <span>SaaS Product Development</span>
-          <span>WordPress & Deployment</span>
-          <span>Process & Workflow Optimisation</span>
-          <span>UI/UX Implementation</span>
-          <span>Agile Project Experience</span>
-        </div>
-      </div>
+          </div>
+        );
+      })}
     </div>
+  </div>
+
   );
 }
